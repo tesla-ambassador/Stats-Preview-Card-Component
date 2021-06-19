@@ -1,0 +1,240 @@
+:root
+{
+/* Primary */
+
+--main-background: hsl(233, 47%, 7%);
+--card-background: hsl(244, 38%, 16%);
+--accent: hsl(277, 64%, 61%);
+
+/* Neutral */
+
+--main-heading-and-stats: hsl(0, 0%, 100%);
+--main-paragraph: hsla(0, 0%, 100%, 0.75);
+--stat-headings: hsla(0, 0%, 100%, 0.6);
+}
+
+/* misc */
+* 
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.titles 
+{
+    color: var(--main-heading-and-stats);
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.purple
+{
+    color: purple;
+}
+
+/* main stuff */
+body
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-background);
+    padding: 200px 10px;
+}
+
+/* main container that contains the card and picture */
+.container-main
+{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+/* The card component */
+.content
+{
+    background-color: var(--card-background);
+    overflow: hidden;
+    width: 35rem;
+    padding: 60px 0px 30px 60px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.content h1 
+{
+    font-size: 2.5rem;
+    padding-bottom: 30px;
+}
+
+.content p
+{
+    padding-bottom: 5px;
+    color: var(--main-paragraph);
+}
+
+/* The small stats, I decided to call them figures cause I was too lazy to come up with something conventional */
+/* I use containers so that I can implement display flex */
+.figures-container
+{
+    display: flex;
+    margin-top: 5rem;
+    padding-bottom: 30px;
+}
+
+.figures 
+{
+    padding: 0px 60px 0px 0px;
+}
+
+.figures h2
+{
+    padding-bottom: 10px;
+}
+
+.stats
+{
+    color: var(--stat-headings);
+}
+
+/* The image at the side, I decided to put it as a background in a div because it was easier to work with it that way and also cause I have change the image at a certain widht during the media queries section */
+.image-container
+{
+    background: url('./images/image-header-desktop.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 540px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+}
+
+.image-container::after
+{
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent);
+    opacity: .3;
+    position: absolute;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.attribution
+{
+    font-size: 11px;
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+.attribution a
+{
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+}
+
+/* Now it's time for the part I hate the most 😂 The media queries, seriously these things can make you feel like gorging out your eyes sometimes. */
+@media screen and (max-width: 1000px)
+{
+    .container-main
+    {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: none;
+        width: 80%;
+    }
+
+    .content
+    {
+        width: 100%;
+        border-top-left-radius: 0px;
+        border-bottom-right-radius: 10px;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .figures-container
+    {
+        justify-content: center;
+        padding-right: 0;
+        padding-left: 20px;
+        text-align: center;
+    }
+
+    .image-container
+    {
+        width: 100%;
+        height: 75vh;
+        background: url('./images/image-header-mobile.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 10px;
+    }
+
+    .image-container::after
+    {
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 10px;
+    }
+}
+@media screen and (max-width: 530px)
+{
+    .figures-container
+    {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 0;
+    }
+
+    .figures
+    {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        padding-right: 0;
+    }
+
+    .content h1 
+    {
+        font-size: 2rem;
+    }
+
+    .image-container
+    {
+        height: 55vh;
+    }
+}
+@media screen and (max-width: 400px)
+{
+    .content h1
+    {
+        font-size: 1.5rem;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .content p 
+    {
+        font-size: 15px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .image-container
+    {
+        height: 35vh;
+    }
+
+    .figures h2
+    {
+        font-size: 1.3rem;
+    }
+
+    .stats
+    {
+        font-size: 14px;
+    }
+}
